@@ -23,19 +23,41 @@ struct ContentView: View {
                 .padding(.bottom)
         }
         .scaleEffect(scale)
+        
+        
+//        VStack(spacing: 12) {
+//
+//            HStack {
+//                Spacer()
+//                Text("0")
+//                    .font(.system(size: 76))
+//                    .minimumScaleFactor(0.5)
+//                    .lineLimit(1)
+//                    .padding(.trailing, 24)
+//                    .foregroundColor(Color("number"))
+//            }
+//            CalculatorButtonPad()
+//                .padding(.bottom)
+//        }
+//        .frame(minHeight: 0, maxHeight: .infinity, alignment: .bottom)
+//        .scaleEffect(scale)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-        ContentView()
+            ContentView()
+//            ContentView()
+//                .preferredColorScheme(.dark)
 //        ContentView().previewDevice("iPhone SE (2nd generation)")
         }
     }
 }
 
 struct CalculatorButton: View {
+    let scale: CGFloat = UIScreen.main.bounds.width / 375
+    
     let fontSize: CGFloat = 38
     let title: String
     let size: CGSize
@@ -52,7 +74,20 @@ struct CalculatorButton: View {
                 .frame(width: size.width, height: size.height)
                 .background(Color(backgroundColorName))
                 .cornerRadius(size.width / 2)
+
         })
+//        .scaleEffect(scale)
+        
+//        ZStack {
+//            RoundedRectangle(cornerRadius: size.width / 2)
+//                .frame(width: size.width, height: size.height)
+//                .foregroundColor(Color(backgroundColorName))
+//            Button(action: action, label: {
+//                Text(title)
+//                    .font(.system(size: fontSize))
+//                    .foregroundColor(foregroundColor)
+//            })
+//        }
     }
 }
 
@@ -62,7 +97,11 @@ struct CalculatorButtonRow: View {
     var body: some View {
         HStack {
             ForEach(row, id: \.self) { item in
-                CalculatorButton(title: item.title, size: item.size, backgroundColorName: item.backgroundColorName, foregroundColor: item.foregroundColor) {
+                CalculatorButton(
+                    title: item.title,
+                    size: item.size,
+                    backgroundColorName: item.backgroundColorName, foregroundColor: item.foregroundColor)
+                {
                     print("Button" + item.title)
                 }
             }
