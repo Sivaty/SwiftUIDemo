@@ -9,16 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     let scale: CGFloat = UIScreen.main.bounds.width / 375
+//    @ObservedObject var model = CalculatorModel()
+    @EnvironmentObject var model: CalculatorModel
+    @State private var editingHistory = false
     
     var body: some View {
         VStack(spacing: 12) {
             Spacer()
-            Text("0")
+            Button("操作历史：\(model.history.count)") {
+                editingHistory = true
+            }.sheet(isPresented: $editingHistory, content: {
+                HistoryView(model: model)
+            })
+            Text(model.brain.output)
                 .font(.system(size: 76))
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
                 .padding(.trailing, 24)
+//            CalculatorButtonPad(model: model)
             CalculatorButtonPad()
                 .padding(.bottom)
         }
@@ -47,7 +56,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            ContentView().environmentObject(CalculatorModel())
 //            ContentView()
 //                .preferredColorScheme(.dark)
 //        ContentView().previewDevice("iPhone SE (2nd generation)")
@@ -92,6 +101,9 @@ struct CalculatorButton: View {
 }
 
 struct CalculatorButtonRow: View {
+//    @Binding var brain: CalculatorBrain
+//    var model: CalculatorModel
+    @EnvironmentObject var model: CalculatorModel
     let row: [CalculatorButtonItem]
     
     var body: some View {
@@ -102,7 +114,7 @@ struct CalculatorButtonRow: View {
                     size: item.size,
                     backgroundColorName: item.backgroundColorName, foregroundColor: item.foregroundColor)
                 {
-                    print("Button" + item.title)
+                    model.apply(item)
                 }
             }
         }
@@ -110,6 +122,8 @@ struct CalculatorButtonRow: View {
 }
 
 struct CalculatorButtonPad: View {
+//    @Binding var brain: CalculatorBrain
+//    var model: CalculatorModel
     let pad: [[CalculatorButtonItem]] = [
         [.command(.clear), .command(.flip), .command(.percent), .op(.divide)],
         [.digit(7), .digit(8), .digit(9), .op(.multiply)],
@@ -122,6 +136,7 @@ struct CalculatorButtonPad: View {
     var body: some View {
         VStack(spacing: 8) {
             ForEach(pad, id: \.self) { row in
+//                CalculatorButtonRow(model: model, row: row)
                 CalculatorButtonRow(row: row)
             }
         }
