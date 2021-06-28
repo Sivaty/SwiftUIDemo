@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct HistoryView: View {
+    @Binding var editingHistory: Bool
     @ObservedObject var model: CalculatorModel
     var body: some View {
         VStack {
+            Button("关闭") {
+                editingHistory = false
+            }
+            
             // 1
             if model.totalCount == 0 {
                 Text("没有履历")
@@ -31,11 +36,5 @@ struct HistoryView: View {
                 )
             }
         }.padding()
-    }
-}
-
-struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryView(model: CalculatorModel())
     }
 }
