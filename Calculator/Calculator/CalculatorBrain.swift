@@ -178,21 +178,4 @@ extension String {
     }
 }
 
-extension CalculatorButtonItem.Op {
-    func calculate(l: String, r: String) -> String? {
 
-        guard let left = Double(l), let right = Double(r) else {
-            return nil
-        }
-
-        let result: Double?
-        switch self {
-        case .plus: result = left + right
-        case .minus: result = left - right
-        case .multiply: result = left * right
-        case .divide: result = right == 0 ? nil : left / right
-        case .equal: fatalError()
-        }
-        return result.map { String($0) }
-    }
-}
