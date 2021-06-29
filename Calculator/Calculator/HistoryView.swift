@@ -11,7 +11,8 @@ struct HistoryView: View {
     @Binding var editingHistory: Bool
     @ObservedObject var model: CalculatorModel
     var body: some View {
-        VStack {
+        print("HistoryView")
+        return VStack {
             Button("关闭") {
                 editingHistory = false
             }

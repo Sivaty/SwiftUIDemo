@@ -20,9 +20,14 @@ class CalculatorModel: ObservableObject {
 //    }
     
 //    方式二
-    @Published var brain: CalculatorBrain = .left("0")
+//    @Published var brain: CalculatorBrain = .left("0")
+//
+//    @Published var history: [CalculatorButtonItem] = []
     
-    @Published var history: [CalculatorButtonItem] = []
+    // 方式三
+    var brain: CalculatorBrain = .left("0")
+    var history: [CalculatorButtonItem] = []
+    let objectWillChange = PassthroughSubject<Void, Never>()
     
     func apply(_ item: CalculatorButtonItem) {
         brain.apply(item: item)
@@ -57,5 +62,6 @@ class CalculatorModel: ObservableObject {
             result, item in
             result.apply(item: item)
         }
+        objectWillChange.send()
     }
 }
