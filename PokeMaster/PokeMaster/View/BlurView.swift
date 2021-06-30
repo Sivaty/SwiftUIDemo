@@ -13,6 +13,11 @@ struct BlurView: UIViewRepresentable {
     // 1
     let style: UIBlurEffect.Style
     
+    init(style: UIBlurEffect.Style) {
+        print("Init")
+        self.style = style
+    }
+    
     func makeUIView(
         context: UIViewRepresentableContext<BlurView>
     ) -> UIView
@@ -30,6 +35,7 @@ struct BlurView: UIViewRepresentable {
             blurView.widthAnchor
                 .constraint(equalTo: view.widthAnchor)
         ])
+        print("makeUIView")
         return view
     }
     
@@ -38,6 +44,20 @@ struct BlurView: UIViewRepresentable {
         _ uiView: UIView,
         context: UIViewRepresentableContext<BlurView>)
     {
+        for item in uiView.subviews {
+            item.removeFromSuperview()
+        }
+        let blurEffect = UIBlurEffect(style: style)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        // 2
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        uiView.addSubview(blurView)
+        NSLayoutConstraint.activate([
+            blurView.heightAnchor
+                .constraint(equalTo: uiView.heightAnchor),
+            blurView.widthAnchor
+                .constraint(equalTo: uiView.widthAnchor)
+        ])
     }
 }
 
