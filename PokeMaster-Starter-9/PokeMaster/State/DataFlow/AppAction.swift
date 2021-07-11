@@ -12,4 +12,7 @@ enum AppAction {
     case login(email: String, password: String)
     case accountBehaviorDone(result: Result<User, AppError>)
     case logout
+    case emailValid(valid: Bool)
+    case loadPokemons
+    case loadPokemensDone(result: Result<[PokemonViewModel], AppError>)
 }
