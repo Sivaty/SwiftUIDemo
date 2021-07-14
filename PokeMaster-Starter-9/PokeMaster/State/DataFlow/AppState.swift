@@ -42,7 +42,6 @@ extension AppState {
             @Published var verifyPassword = ""
             
             var isEmailValid: AnyPublisher<Bool, Never> {
-                
                 let remoteVerify = $email
                     .debounce(
                         for: .milliseconds(500),
@@ -72,11 +71,27 @@ extension AppState {
                 .map { $0 && ($1 || $2) }
                 .eraseToAnyPublisher()
             }
+            
+            var isPasswordValid: AnyPublisher<Bool, Never> {
+                let isPasswordValid = $password.map { $0.count > 0 }
+                let isVerifyPasswordValid = $verifyPassword.map { $0.count > 0 }
+                let passwordIsEqual = $password.map { $0 == self.verifyPassword }
+                
+                return Publishers.CombineLatest3(isPasswordValid, isVerifyPasswordValid, passwordIsEqual)
+                .map { $0 && $1 && $2 }.eraseToAnyPublisher()
+            }
+            
+            var isEnableRegister: AnyPublisher<Bool, Never> {
+                return Publishers.CombineLatest(isEmailValid, isPasswordValid)
+                .map { $0 && $1 }.eraseToAnyPublisher()
+            }
+            
         }
         var checker = AccountChecker()
         
         var isEmailValid = false
         
+        var isEnableRegister = false
     }
 }
 
