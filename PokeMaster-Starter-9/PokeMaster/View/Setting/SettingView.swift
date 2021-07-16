@@ -47,14 +47,23 @@ struct SettingView: View {
                 if settings.loginRequesting {
                     Text("登录中...")
                 } else {
-                    Button(settings.checker.accountBehavior.text) {
-                        self.store.dispatch(
-                            .login(
-                                email: self.settings.checker.email,
-                                password: self.settings.checker.password
+                    if settings.checker.accountBehavior == .register {
+                        Button(settings.checker.accountBehavior.text) {
+                            if settings.isEnableRegister {
+                                print("EnableRegister")
+                            }
+                        }
+                    } else {
+                        Button(settings.checker.accountBehavior.text) {
+                            self.store.dispatch(
+                                .login(
+                                    email: self.settings.checker.email,
+                                    password: self.settings.checker.password
+                                )
                             )
-                        )
+                        }
                     }
+ 
                 }
             } else {
                 Text(settings.loginUser!.email)
