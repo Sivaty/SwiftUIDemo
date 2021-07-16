@@ -55,11 +55,14 @@ struct PokemonInfoRow: View {
 //                }
                 
                 NavigationLink(destination:
-                    SafariView(url: model.detailPageURL)
-                , label: {
+                    SafariView(url: model.detailPageURL, onFinished: {
+                    store.dispatch(.closeSafariView)
+                }).navigationBarTitle(Text(model.name), displayMode: .inline)
+                               , isActive: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(false)) {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())
-                })
+                }
+            
             }
             .padding(.bottom, 12)
             .opacity(expanded ? 1.0 : 0.0)

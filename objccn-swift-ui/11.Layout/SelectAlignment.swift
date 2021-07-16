@@ -10,9 +10,9 @@ extension VerticalAlignment {
     static let select = VerticalAlignment(SelectAlignment.self)
 }
 
-struct ContentView: View {
+struct SelectAlignmentView: View {
 
-    @State var selectedIndex = 0
+    @State var selectedIndex = 1
 
     let names = [
         "onevcat | Wei Wang",
@@ -21,39 +21,18 @@ struct ContentView: View {
     ]
 
     var body: some View {
-      HStack(alignment: .select) {
-        Text("User:")
-          .font(.footnote)
-          .foregroundColor(.green)
-          .alignmentGuide(.select) { d in
-            d[.bottom] + CGFloat(self.selectedIndex) * 20.3
-          }
-        Image(systemName: "person.circle")
-          .foregroundColor(.green)
-          .alignmentGuide(.select) { d in
-            d[VerticalAlignment.center]
-          }
-        VStack(alignment: .leading) {
-          ForEach(0..<names.count) { index in
-            Text(self.names[index])
-              .foregroundColor(self.selectedIndex == index ? .green : .black)
-              .alignmentGuide(self.selectedIndex == index ? .select : .center) { d in
-                if self.selectedIndex == index {
-                  return d[VerticalAlignment.center]
-                } else {
-                  return 0
-                }
-              }.onTapGesture {
-                self.selectedIndex = index
-              }
-          }
+        HStack {
+            Image(systemName: "person.circle")
+            Text("User:")
+            Text("onevcat | Wei Wang")
         }
-      }.animation(.linear(duration: 0.2))
+        .lineLimit(1)
+        .frame(width: 200)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SelectAlignmentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SelectAlignmentView()
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01588A37269D97CD007B8AE5 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01588A36269D97CC007B8AE5 /* SafariView.swift */; };
+		0158B92226A027E4007B8AE5 /* SelectAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158B92126A027E4007B8AE5 /* SelectAlignment.swift */; };
 		4B2DA89A231F597F00C43B2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DA899231F597F00C43B2A /* AppState.swift */; };
 		4BC15F6C231CA81600A16DC0 /* SettingRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC15F6B231CA81600A16DC0 /* SettingRootView.swift */; };
 		4BC15F6E231CD8B100A16DC0 /* PokemonRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC15F6D231CD8B100A16DC0 /* PokemonRootView.swift */; };
@@ -111,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		01588A36269D97CC007B8AE5 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		0158B92126A027E4007B8AE5 /* SelectAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectAlignment.swift; path = "../../../../objccn-swift-ui/11.Layout/SelectAlignment.swift"; sourceTree = "<group>"; };
 		4B2DA899231F597F00C43B2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4B9EAF6823162D9900B72082 /* PokeMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC15F6B231CA81600A16DC0 /* SettingRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRootView.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 		D1D7EEAC231C001C00A52D3D /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				0158B92126A027E4007B8AE5 /* SelectAlignment.swift */,
 				D1D7EEAD231C002900A52D3D /* SettingView.swift */,
 				4BC15F6B231CA81600A16DC0 /* SettingRootView.swift */,
 			);
@@ -645,6 +648,7 @@
 				D1320B1D23178614006F02A6 /* Pokemon.swift in Sources */,
 				D1B7C787231E9EAB00D5DF81 /* Store.swift in Sources */,
 				D1320AD623178614006F02A6 /* FileHelper.swift in Sources */,
+				0158B92226A027E4007B8AE5 /* SelectAlignment.swift in Sources */,
 				D1D7EEA9231BA96E00A52D3D /* BlurView.swift in Sources */,
 				D1D5A054232A987F00C04496 /* FileStorage.swift in Sources */,
 				D10BBB872327C943006B5A13 /* AppCommand.swift in Sources */,
