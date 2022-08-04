@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DesignCode/DesignCode.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PokeMaster/PokeMaster.xcodeproj">
    </FileRef>
    <FileRef

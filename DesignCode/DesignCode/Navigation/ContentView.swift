@@ -13,7 +13,6 @@ struct ContentView: View {
     var body: some View {
         
         ZStack(alignment: .bottom) {
-            
             switch selectedTab {
             case .home:
                 HomeView()
@@ -26,7 +25,6 @@ struct ContentView: View {
                 Text(selectedTab.rawValue)
             }
             
-//            HomeView()
             TabBar()
         }
         .safeAreaInset(edge: .bottom) {
