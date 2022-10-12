@@ -10,7 +10,22 @@ import SwiftUI
 struct AccountView: View {
     @State var isDeleted = false
     @State var isPinned = false
+    @State var address: Address = Address(id: 1, country: "Canada")
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
+    @AppStorage("isLogged") var isLogged = false
+    @ObservedObject var userModel = UserModel()
+    
+    func fetchAddress() async {
+        do {
+            let url = URL(string: "https://random-data-api.com/api/v2/addresses")!
+            let (data, _) = try await URLSession.shared.data(from: url)
+            address = try JSONDecoder().decode(Address.self, from: data)
+        } catch  {
+            address = Address(id: 1, country: "Error fetch")
+        }
+        
+    }
     
     var body: some View {
         NavigationView {
@@ -20,6 +35,24 @@ struct AccountView: View {
                 menu
                 
                 links
+                
+                users
+                
+                Button {
+                    isLogged = false
+                    dismiss()
+                } label: {
+                    Text("Sign out")
+                }
+                .tint(.red)
+            }
+            .task {
+                await fetchAddress()
+                await userModel.fetchUsers()
+            }
+            .refreshable {
+                await fetchAddress()
+                await userModel.fetchUsers()
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Account")
@@ -55,7 +88,7 @@ struct AccountView: View {
                 Image(systemName: "location")
                     .imageScale(.small)
                     .foregroundColor(.secondary)
-                Text("Canada")
+                Text(address.country)
                     .foregroundColor(.secondary)
             }
         }
@@ -125,6 +158,29 @@ struct AccountView: View {
             }
         }
         .accentColor(.primary)
+    }
+    
+    var users: some View {
+        Section("Users") {
+            ForEach(userModel.users) { user in
+                HStack {
+                    AsyncImage(url: URL(string: user.avatar)) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 32, height: 32)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(user.username)
+                        Text(user.email)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+        }
+
     }
 }
 
