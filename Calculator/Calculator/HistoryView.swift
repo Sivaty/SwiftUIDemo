@@ -10,8 +10,15 @@ import SwiftUI
 struct HistoryView: View {
     @Binding var editingHistory: Bool
     @ObservedObject var model: CalculatorModel
+    
+//    @Converter(initialValue: "100", from: "USD", to: "CNY", rate: 6.88)
+//    var usd_cny
+//    @Converter(initialValue: "100", from: "CNY", to: "EUR", rate: 0.13)
+//    var cny_eur
+    
     var body: some View {
         print("HistoryView")
+           
         return VStack {
             Button("关闭") {
                 editingHistory = false
@@ -30,11 +37,7 @@ struct HistoryView: View {
                     Text("\(model.brain.output)")
                 }
                 // 2
-                Slider(
-                    value: $model.slidingIndex,
-                    in: 0...Float(model.totalCount),
-                    step: 1
-                )
+                Slider(value: $model.slidingIndex, in: 0...Float(model.totalCount), step: 1)
             }
         }.padding()
     }

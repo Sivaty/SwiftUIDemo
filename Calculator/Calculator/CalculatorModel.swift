@@ -30,7 +30,8 @@ class CalculatorModel: ObservableObject {
     let objectWillChange = PassthroughSubject<Void, Never>()
     
     func apply(_ item: CalculatorButtonItem) {
-        brain.apply(item: item)
+        Reducer.reduce(state: brain, action: item)
+//        brain.apply(item: item)
         history.append(item)
         
         temporaryKept.removeAll()

@@ -32,7 +32,6 @@ struct ContentView: View {
                     showResult = model.history.count > 0
                 }
                 .alert(isPresented: $showResult, content: {
-                    
                     Alert(title: Text(model.historyDetail), message: Text(model.brain.output), primaryButton: Alert.Button.default(Text("Copy")) {
                         UIPasteboard.general.string = model.historyDetail + model.brain.output
                     }, secondaryButton:Alert.Button.cancel())
@@ -83,7 +82,6 @@ struct CalculatorButton: View {
     let backgroundColorName: String
     let foregroundColor: Color
     let action: () -> Void
-    
     
     var body: some View {
         Button(action: action, label: {

@@ -96,12 +96,44 @@ struct LabelView: View {
 
 struct ContentView: View {
     @State var counter = 0
+    @State var userAgreed = false
+    
     var body: some View {
-        print("ContentView")
-        return VStack {
+        VStack {
+            ColorPicker(/*@START_MENU_TOKEN@*/"Title"/*@END_MENU_TOKEN@*/, selection: .constant(.red))
+            DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { /*@START_MENU_TOKEN@*/Text("Date")/*@END_MENU_TOKEN@*/ })
             Button("Tap me!") { self.counter += 1 }
             LabelView(number: $counter)
+            DisclosureGroup(/*@START_MENU_TOKEN@*/"Group"/*@END_MENU_TOKEN@*/) {
+                DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { /*@START_MENU_TOKEN@*/Text("Date")/*@END_MENU_TOKEN@*/ })
+            }
+            
+            EditButton()
+            
+            Gauge(value: /*@START_MENU_TOKEN@*/0.5/*@END_MENU_TOKEN@*/, in: /*@START_MENU_TOKEN@*/0...1/*@END_MENU_TOKEN@*/) {
+                /*@START_MENU_TOKEN@*/Text("Label")/*@END_MENU_TOKEN@*/
+            }
+            
+            
+            GroupBox(label:
+                Label("End-User Agreement", systemImage: "building.columns")
+            ) {
+                ScrollView(.vertical, showsIndicators: true) {
+                    Text("agreementText")
+                        .font(.footnote)
+                }
+                .frame(height: 100)
+                Toggle(isOn: $userAgreed) {
+                    Text("I agree to the above terms")
+                }
+            }
+           
+            ProgressView(value: 0.5)
+            
+            RenameButton()
+            
         }
+        .padding()
     }
 }
 
