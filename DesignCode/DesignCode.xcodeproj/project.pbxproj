@@ -27,6 +27,9 @@
 		3BAEAD7F289EBFA6008F97CD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAEAD7E289EBFA6008F97CD /* Model.swift */; };
 		3BB19CE328F707B10078A280 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB19CE228F707B10078A280 /* Address.swift */; };
 		3BB19CE528F70AFD0078A280 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB19CE428F70AFD0078A280 /* Users.swift */; };
+		3BB19CE728FAF9470078A280 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB19CE628FAF9470078A280 /* CircularView.swift */; };
+		3BB19CE928FAFF1B0078A280 /* CourseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB19CE828FAFF1B0078A280 /* CourseSection.swift */; };
+		3BB19CED28FB00290078A280 /* SectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB19CEC28FB00290078A280 /* SectionRow.swift */; };
 		3BD6E0A928BA025D009A3D22 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD6E0A828BA025D009A3D22 /* SearchView.swift */; };
 		3BD6E0AB28BB5627009A3D22 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD6E0AA28BB5627009A3D22 /* Suggestion.swift */; };
 		3BD6E0AD28BB77B6009A3D22 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD6E0AC28BB77B6009A3D22 /* SignUpView.swift */; };
@@ -62,6 +65,9 @@
 		3BAEAD7E289EBFA6008F97CD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3BB19CE228F707B10078A280 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		3BB19CE428F70AFD0078A280 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		3BB19CE628FAF9470078A280 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
+		3BB19CE828FAFF1B0078A280 /* CourseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSection.swift; sourceTree = "<group>"; };
+		3BB19CEC28FB00290078A280 /* SectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionRow.swift; sourceTree = "<group>"; };
 		3BD6E0A828BA025D009A3D22 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3BD6E0AA28BB5627009A3D22 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		3BD6E0AC28BB77B6009A3D22 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 				3BD6E0AA28BB5627009A3D22 /* Suggestion.swift */,
 				3BB19CE228F707B10078A280 /* Address.swift */,
 				3BB19CE428F70AFD0078A280 /* Users.swift */,
+				3BB19CE828FAFF1B0078A280 /* CourseSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +152,8 @@
 				3B0580C1289045A7000DD441 /* FeaturedItem.swift */,
 				3BAEAD78289536B0008F97CD /* CourseItem.swift */,
 				3B1EB95028F5B45000ADB46F /* AvatarView.swift */,
+				3BB19CE628FAF9470078A280 /* CircularView.swift */,
+				3BB19CEC28FB00290078A280 /* SectionRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -273,6 +282,8 @@
 				3BE815BE28BBAAC0003DF375 /* AngularButtonStyle.swift in Sources */,
 				3BE579D5288D2AA30022DDD2 /* BlobView.swift in Sources */,
 				3B00094B28C63C2D00B3C515 /* SignInView.swift in Sources */,
+				3BB19CE728FAF9470078A280 /* CircularView.swift in Sources */,
+				3BB19CE928FAFF1B0078A280 /* CourseSection.swift in Sources */,
 				3B4D7EA6288BA5BC003EDCC9 /* ContentView.swift in Sources */,
 				3BAEAD7528943713008F97CD /* Course.swift in Sources */,
 				3B4D7EA4288BA5BC003EDCC9 /* DesignCodeApp.swift in Sources */,
@@ -280,6 +291,7 @@
 				3B0580C2289045A7000DD441 /* FeaturedItem.swift in Sources */,
 				3BB19CE528F70AFD0078A280 /* Users.swift in Sources */,
 				3BD6E0AD28BB77B6009A3D22 /* SignUpView.swift in Sources */,
+				3BB19CED28FB00290078A280 /* SectionRow.swift in Sources */,
 				3BAEAD7D289C0CF7008F97CD /* Animations.swift in Sources */,
 				3B0580C628917C57000DD441 /* PreferenceKeys.swift in Sources */,
 				3BE815C028BBB443003DF375 /* InputStyle.swift in Sources */,
